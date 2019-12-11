@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Webcam</title>
+    <style>
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="" id="webcam" onclick="javascript:reload()" />
+    <script>
+      self.setInterval("reload()", 10000);
+      let i = 0;
+
+      function reload() {
+        i = i + 1;
+        let place = window.location.search.substr(1) || "Bedford";
+        document.title = place;
+        let url = `https://novascotia.ca/tran/webcam/secure/images/rwis_cam/${place}_1.jpg?r=${i}`;
+        document.getElementById("webcam").setAttribute("src", url);
+      }
+
+      reload();
+    </script>
+  </body>
+</html>
